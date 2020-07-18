@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="/LogicaConcesionario.js"></script>
+    <script type="text/javascript" src="/Vehiculo.js"></script>
+    <script type="text/javascript" src="/Auto.js"></script>
+    <script type="text/javascript" src="/Camioneta.js"></script>
+    <link type="text/css" href="./Css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container" id="contenedor" hidden="true">
+        <label>Id: </label>
+        <input type="Text" id="txtId" disabled="true" /><br>
+        <label>Marca: </label>
+        <input type="Text" id="txtMarca" /><br>
+        <label>Modelo: </label>
+        <input type="Text" id="txtModelo" /><br>
+        <label>Precio: </label>
+        <input type="number" id="txtPrecio" /><br>
+        <label>Tipo: </label>
+        <select id="selectTipo">
+            <option selected value> -- Seleccione el tipo de Vehiculo -- </option>
+            <option>Camioneta</option>
+            <option>Auto</option>
+        </select><br>
+        <div id="tpAuto" hidden="true">
+            <label>Cantidad de Puertas: </label>
+            <input type="number" id="txtPuerta" />
+        </div>
+        <div id="tpCamioneta" hidden="true">
+            <label>Seleccionar si es 4x4, de otra manera dejar tal cual</label><br>
+            <input type="checkbox" id="boolean" /><label>4x4</label>
+        </div>
+        <input type="button" id="btnAgregar" value="Agregar" disabled="true" />
+    </div>
+    <div class="container" id="inputs">
+        <input type="button" class="variant" id="agregar" value="Mostrar/Ocultar Registro" />
+        <input type="text" class="variant" id="txtBuscar" />
+    </div>
+
+    <div id="metricas">
+        <h1 id="titleMetricas">Filtros</h1>
+        <label>Filtrar Por: </label>
+        <select id="selectFiltro">
+            <option selected value> Ninguno </option>
+            <option>Auto</option>
+            <option>Camioneta</option>
+        </select>
+        <label>Promedio Precios</label>
+        <input disabled="true" id="txtPromedio" />
+        <input type="button" id="btnPromedio" value="Promediar Precios" />
+    </div>
+    <div id="cabecerasTablas">
+        <h2>Campos a Mostrar</h2>
+        <h4>Seleccione los campos que desea mostrar</h4>
+        <input type="checkbox" id="chId" /><label>Id</label>
+        <input type="checkbox" id="chMarca" /><label>Marca</label>
+        <input type="checkbox" id="chModelo" /><label>Modelo</label>
+        <input type="checkbox" id="chPrecio" /><label>Precio</label>
+    </div>
+
+    <table id="tablaDatos" border="1">
+        <thead>
+            <tr id="cabeceraTabla">
+                <th disabled=t rue>Id</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Precio</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpo">
+
+        </tbody>
+    </table>
+</body>
+
+</html>
