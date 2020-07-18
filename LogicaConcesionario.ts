@@ -6,9 +6,11 @@ namespace Concesionario{
         document.getElementById("agregar")?.addEventListener("click",LogicaConcesionario.mostrarUOcultarContenedorAgregar);
         document.getElementById("btnAgregar")?.addEventListener("click",LogicaConcesionario.validateDataAndAddRow);
         document.getElementById("selectFiltro")?.addEventListener('change',LogicaConcesionario.buildTable);
-        let button =(<HTMLInputElement>document.getElementById("btnPromedio"));
-        button.addEventListener('click',LogicaConcesionario.calcularPromedio);
-
+        document.getElementById("btnPromedio")?.addEventListener('click',LogicaConcesionario.calcularPromedio);
+        document.getElementById("chPrecio")?.addEventListener('change',LogicaConcesionario.ocultarTd);
+        document.getElementById("chMarca")?.addEventListener('change',LogicaConcesionario.ocultarTd);
+        document.getElementById("chModelo")?.addEventListener('change',LogicaConcesionario.ocultarTd);
+        document.getElementById("chId")?.addEventListener('change',LogicaConcesionario.ocultarTd);
     }
 
     export class LogicaConcesionario{
@@ -16,6 +18,25 @@ namespace Concesionario{
         private static viejaTabla:any;
         static lstVehiculos:Vehiculo[] = new Array();       
         
+        static ocultarTd(p:any){
+            let tabla = <HTMLTableElement>document.getElementById("cabeceraTabla");
+           console.log(p.target.nextElementSibling.textContent);
+            for(let i=0;i<tabla.childNodes.length;i++){
+                
+                console.log( tabla.childNodes[i].textContent);
+                if(p.target.nextElementSibling.textContent == tabla.childNodes[i].textContent){
+                    LogicaConcesionario.rendererTable(i);
+                    (<HTMLTableElement>tabla.childNodes[i]).hidden = !(<HTMLTableElement>tabla.childNodes[i]).hidden; 
+                }
+            }
+        }
+        static rendererTable(tdABorrar:number){
+            let tabla = <HTMLTableElement>document.getElementById("cuerpo");
+            console.log(tabla.childNodes[0]);
+            /*for(let i = 0 ;i<tabla.childNodes[0].childNodes.length;i++){
+                if()
+            }*/
+        }
         static calcularPromedio(){
             LogicaConcesionario.searchTipo()
             .then(function(listaCoincidencias){

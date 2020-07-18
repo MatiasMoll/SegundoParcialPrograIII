@@ -2,16 +2,37 @@
 var Concesionario;
 (function (Concesionario) {
     window.onload = function () {
-        var _a, _b, _c;
+        var _a, _b, _c, _d, _e, _f, _g, _h;
         (_a = document.getElementById("agregar")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", LogicaConcesionario.mostrarUOcultarContenedorAgregar);
         (_b = document.getElementById("btnAgregar")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", LogicaConcesionario.validateDataAndAddRow);
         (_c = document.getElementById("selectFiltro")) === null || _c === void 0 ? void 0 : _c.addEventListener('change', LogicaConcesionario.buildTable);
-        var button = document.getElementById("btnPromedio");
-        button.addEventListener('click', LogicaConcesionario.calcularPromedio);
+        (_d = document.getElementById("btnPromedio")) === null || _d === void 0 ? void 0 : _d.addEventListener('click', LogicaConcesionario.calcularPromedio);
+        (_e = document.getElementById("chPrecio")) === null || _e === void 0 ? void 0 : _e.addEventListener('change', LogicaConcesionario.ocultarTd);
+        (_f = document.getElementById("chMarca")) === null || _f === void 0 ? void 0 : _f.addEventListener('change', LogicaConcesionario.ocultarTd);
+        (_g = document.getElementById("chModelo")) === null || _g === void 0 ? void 0 : _g.addEventListener('change', LogicaConcesionario.ocultarTd);
+        (_h = document.getElementById("chId")) === null || _h === void 0 ? void 0 : _h.addEventListener('change', LogicaConcesionario.ocultarTd);
     };
     var LogicaConcesionario = /** @class */ (function () {
         function LogicaConcesionario() {
         }
+        LogicaConcesionario.ocultarTd = function (p) {
+            var tabla = document.getElementById("cabeceraTabla");
+            console.log(p.target.nextElementSibling.textContent);
+            for (var i = 0; i < tabla.childNodes.length; i++) {
+                console.log(tabla.childNodes[i].textContent);
+                if (p.target.nextElementSibling.textContent == tabla.childNodes[i].textContent) {
+                    LogicaConcesionario.rendererTable(i);
+                    tabla.childNodes[i].hidden = !tabla.childNodes[i].hidden;
+                }
+            }
+        };
+        LogicaConcesionario.rendererTable = function (tdABorrar) {
+            var tabla = document.getElementById("cuerpo");
+            console.log(tabla.childNodes[0]);
+            /*for(let i = 0 ;i<tabla.childNodes[0].childNodes.length;i++){
+                if()
+            }*/
+        };
         LogicaConcesionario.calcularPromedio = function () {
             LogicaConcesionario.searchTipo()
                 .then(function (listaCoincidencias) {
