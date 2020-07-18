@@ -21,17 +21,9 @@ var Concesionario;
             for (var i = 0; i < tabla.childNodes.length; i++) {
                 console.log(tabla.childNodes[i].textContent);
                 if (p.target.nextElementSibling.textContent == tabla.childNodes[i].textContent) {
-                    LogicaConcesionario.rendererTable(i);
                     tabla.childNodes[i].hidden = !tabla.childNodes[i].hidden;
                 }
             }
-        };
-        LogicaConcesionario.rendererTable = function (tdABorrar) {
-            var tabla = document.getElementById("cuerpo");
-            console.log(tabla.childNodes[0]);
-            /*for(let i = 0 ;i<tabla.childNodes[0].childNodes.length;i++){
-                if()
-            }*/
         };
         LogicaConcesionario.calcularPromedio = function () {
             LogicaConcesionario.searchTipo()
